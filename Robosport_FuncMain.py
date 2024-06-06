@@ -46,11 +46,12 @@ def GryoMoveColor (Angle,Speed):
         GryoMove(Angle,Speed)
     RobotStop()
 
-def GyroMoveDegrees(Angle,Speed,Degrees,Stop):
+def GyroMoveDegrees(Angle,Speed,Degrees,Time,Stop):
     MotorC.reset_angle(0)
     MotorD.reset_angle(0)
     totalDegrees=0
-    while totalDegrees<Degrees:
+    timer.reset()
+    while totalDegrees<Degrees and timer.time()<Time*1000:
         totalDegrees=(abs(MotorC.angle())+abs(MotorD.angle()))/2
         GryoMove(Angle,Speed)
     if Stop==1:

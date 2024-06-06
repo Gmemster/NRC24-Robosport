@@ -6,8 +6,8 @@ from Robosport_FuncMain import*
 
 while True:
     GryoReset()
-    GyroMoveDegrees(0,100,950,0)
-    GyroMoveDegrees(0,50,100,1)
+    GyroMoveDegrees(0,100,950,3,0)
+    GyroMoveDegrees(0,50,100,2,1)
     MotorE.dc(-100)
     wait(2000)
     MotorE.stop()
@@ -28,8 +28,8 @@ while True:
 
     GryoReset()
     GryoMoveTime(0,-30,0.2)
-    GyroMoveDegrees(-80,100,900,0)
-    GyroMoveDegrees(-85,50,100,1)
+    GyroMoveDegrees(-80,100,900,3,0)
+    GyroMoveDegrees(-85,50,100,2,1)
     MotorE.dc(-100)
     wait(2000)
     MotorE.stop()
