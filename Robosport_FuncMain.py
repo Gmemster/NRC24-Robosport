@@ -31,7 +31,7 @@ def GryoReset():
 
 def GryoMove (Angle,Speed):
     error=Angle-hub.imu.heading()
-    correction=error*5
+    correction=error*3
     MotorC.dc(-Speed-correction)
     MotorD.dc(Speed-correction)
 
@@ -41,7 +41,7 @@ def GryoMoveTime (Angle,Speed,Time):
         GryoMove(Angle,Speed)
 
 def GryoMoveColor (Angle,Speed):
-    while ColorA.color()!=Color.GREEN:
+    while ColorA.color()!=Color.BLUE:
         print(ColorA.color())
         GryoMove(Angle,Speed)
     RobotStop()
@@ -63,3 +63,12 @@ def GyroMoveStuck(Angle,Speed):
         print(MotorC.speed(),MotorD.speed(),ColorA.color())
         GryoMove(Angle,Speed)
     RobotStop()
+
+#Unusable
+# def GyroMoveTilt(Angle,Speed,tAngle):
+#     y=hub.imu.tilt()
+#     while True:
+#         y=hub.imu.tilt()
+#         # GryoMove(Angle,Speed)
+#         print (y[1])
+#     RobotStop()

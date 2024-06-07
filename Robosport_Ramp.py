@@ -3,6 +3,8 @@ from Robosport_FuncMain import*
 'gryo respawn test'
 # while True:
     # GryoMove(0,0)
+# while True:
+#     GyroMoveTilt(0,100)
 
 while True:
     GryoReset()
