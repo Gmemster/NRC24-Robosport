@@ -3,7 +3,7 @@ from Robosport_FuncMain import*
 'gryo respawn test'
 # while True:
     # GryoMove(0,0)
-
+#yz is gay
 
 while True:
     GryoReset()
