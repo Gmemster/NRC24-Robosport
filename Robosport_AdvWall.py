@@ -1,5 +1,6 @@
 from Robosport_FuncMain import*
 
+#yz is gay
 while True:
     GryoReset()
     GyroMoveDegrees(0,100,1000,2.5,0)
