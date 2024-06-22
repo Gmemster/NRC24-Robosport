@@ -1,1 +1,0 @@
-Yong Zeng is gay
