@@ -26,24 +26,24 @@ def RobotStop():
     MotorD.brake()
     wait(200)
 
-def GryoReset():
+def GyroReset():
     hub.imu.reset_heading(0)
 
-def GryoMove (Angle,Speed):
+def GyroMove (Angle,Speed):
     error=Angle-hub.imu.heading()
     correction=error*3
     MotorC.dc(-Speed-correction)
     MotorD.dc(Speed-correction)
 
-def GryoMoveTime (Angle,Speed,Time):
+def GyroMoveTime (Angle,Speed,Time):
     timer.reset()
     while timer.time()<Time*1000:
-        GryoMove(Angle,Speed)
+        GyroMove(Angle,Speed)
 
-def GryoMoveColor (Angle,Speed):
+def GyroMoveColor (Angle,Speed):
     while ColorA.color()!=Color.BLUE:
         print(ColorA.color())
-        GryoMove(Angle,Speed)
+        GyroMove(Angle,Speed)
     RobotStop()
 
 def GyroMoveDegrees(Angle,Speed,Degrees,Time,Stop):
@@ -53,7 +53,7 @@ def GyroMoveDegrees(Angle,Speed,Degrees,Time,Stop):
     timer.reset()
     while totalDegrees<Degrees and timer.time()<Time*1000:
         totalDegrees=(abs(MotorC.angle())+abs(MotorD.angle()))/2
-        GryoMove(Angle,Speed)
+        GyroMove(Angle,Speed)
     if Stop==1:
         RobotStop()
 
@@ -61,7 +61,7 @@ def GyroMoveStuck(Angle,Speed):
     timer.reset()
     while abs(MotorC.speed())>300 or abs(MotorD.speed())>300 and timer.time()<2000:
         print(MotorC.speed(),MotorD.speed(),ColorA.color())
-        GryoMove(Angle,Speed)
+        GyroMove(Angle,Speed)
     RobotStop()
 
 #Unusable
