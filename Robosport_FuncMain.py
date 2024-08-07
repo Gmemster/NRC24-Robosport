@@ -59,8 +59,9 @@ def GyroMoveDegrees(Angle,Speed,Degrees,Time,Stop):
 
 def GyroMoveStuck(Angle,Speed):
     timer.reset()
+    GyroMove(Angle,Speed)
+    wait(500)
     while abs(MotorC.speed())>300 or abs(MotorD.speed())>300 and timer.time()<2000:
-        print(MotorC.speed(),MotorD.speed(),ColorA.color())
         GyroMove(Angle,Speed)
     RobotStop()
 
