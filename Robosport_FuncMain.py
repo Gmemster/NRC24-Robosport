@@ -65,6 +65,19 @@ def GyroMoveStuck(Angle,Speed):
         GyroMove(Angle,Speed)
     RobotStop()
 
+#'---- Variable Turn-rate System ----'#
+def GyroMoveVar(Angle,Speed,Turn):
+    error=Angle-hub.imu.heading()
+    correction=error*Turn
+    MotorC.dc(-Speed-correction)
+    MotorD.dc(Speed-correction)
+
+def GyroMoveTurn(Angle,Speed,Time,Turn):
+    timer.reset()
+    while timer.time()<Time*1000:
+        GyroMoveVar(Angle,Speed,Turn)
+
+
 #Unusable
 # def GyroMoveTilt(Angle,Speed,tAngle):
 #     y=hub.imu.tilt()
