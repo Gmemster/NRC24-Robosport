@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Wall",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pybricksdev",
+            "args": [
+                "run","ble","--name","T2 Wall","${file}"
+            ],
+        },
+
+        {
+            "name": "Ramp",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pybricksdev",
+            "args": [
+                "run","ble","--name","T2 Ramp","${file}"
+            ],
+        }
+    ]
+}
