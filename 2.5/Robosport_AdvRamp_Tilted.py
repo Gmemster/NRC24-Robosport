@@ -7,7 +7,7 @@ from Robosport_FuncMain import*
 
 while True:
     GyroReset()
-    GyroMoveDegrees(0,100,950,3,0) #move like 60% of the way there
+    GyroMoveDegrees(0,100, 950,3,0) #move like 60% of the way there
     GyroMoveDegrees(0,50,150,2,1) #move slower
     GyroMoveTime(-30,50,0.7)
     RobotStop()
