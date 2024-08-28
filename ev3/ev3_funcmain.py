@@ -12,6 +12,8 @@ MotorC=Motor(Port.C)
 MotorD=Motor(Port.D)
 MotorE=Motor(Port.A)
 Gyro=GyroSensor(Port.S2,direction=Direction.CLOCKWISE)
+Camera=I2CDevice(Port.S4,0x25)
+
 
 'Create Timer Function'
 timer=StopWatch()
@@ -64,3 +66,4 @@ def GyroMoveStuck(Angle,Speed):
         GyroMove(Angle,Speed)
     RobotStop()
 
+'Camera Reading'
