@@ -4,6 +4,7 @@ from pybricks.parameters import Button, Color, Direction, Port, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
 from pybricks.iodevices import I2CDevice
+from pixycamev3.pixy2 import Pixy2
 
 'Identify Hub and Ports'
 hub = EV3Brick()
@@ -12,6 +13,8 @@ MotorC=Motor(Port.C)
 MotorD=Motor(Port.D)
 MotorE=Motor(Port.A)
 Gyro=GyroSensor(Port.S2,direction=Direction.CLOCKWISE)
+Pixy=Pixy2(3,54)
+
 
 'Create Timer Function'
 timer=StopWatch()
