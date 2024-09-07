@@ -1,20 +1,23 @@
-from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor, GyroSensor, ColorSensor
+from pybricks.parameters import Button, Color, Direction, Port, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
+from pybricks.iodevices import I2CDevice
+from pixycamev3.pixy2 import Pixy2
 
 'Identify Hub and Ports'
-hub = PrimeHub()
-ColorA=ColorSensor(Port.A)
+hub = EV3Brick()
+ColorA=ColorSensor(Port.S1)
 MotorC=Motor(Port.C)
 MotorD=Motor(Port.D)
-MotorE=Motor(Port.E)
+MotorE=Motor(Port.A)
+Gyro=GyroSensor(Port.S2,direction=Direction.CLOCKWISE)
+Pixy=Pixy2(3,54)
 
 
-'Create timer function'
+'Create Timer Function'
 timer=StopWatch()
-
 
 'Movement functions'
 def RobotStart (Cpower,Dpower):
@@ -27,22 +30,21 @@ def RobotStop():
     wait(200)
 
 def GyroReset():
-    hub.imu.reset_heading(0)
+    Gyro.reset_angle(0)
 
-def GyroMove (Angle,Speed):
-    error=Angle-hub.imu.heading()
+def GyroMove(Angle,Speed):
+    error=Angle-Gyro.angle()
     correction=error*3
     MotorC.dc(-Speed-correction)
     MotorD.dc(Speed-correction)
 
-def GyroMoveTime (Angle,Speed,Time):
+def GyroMoveTime(Angle,Speed,Time):
     timer.reset()
     while timer.time()<Time*1000:
         GyroMove(Angle,Speed)
 
-def GyroMoveColor (Angle,Speed):
+def GyroMoveColor(Angle,Speed):
     while ColorA.color()!=Color.BLUE:
-        print(ColorA.color())
         GyroMove(Angle,Speed)
     RobotStop()
 
@@ -52,7 +54,7 @@ def GyroMoveDegrees(Angle,Speed,Degrees,Time,Stop):
     totalDegrees=0
     timer.reset()
     while totalDegrees<Degrees and timer.time()<Time*1000:
-        totalDegrees=(abs(MotorC.angle())+abs(MotorD.angle()))/2
+        totalDegrees=(abs(MotorC.angle())+abs(MotorD.angle()))
         GyroMove(Angle,Speed)
     if Stop==1:
         RobotStop()
@@ -65,24 +67,3 @@ def GyroMoveStuck(Angle,Speed):
         GyroMove(Angle,Speed)
     RobotStop()
 
-#'---- Variable Turn-rate System ----'#
-def GyroMoveVar(Angle,Speed,Turn):
-    error=Angle-hub.imu.heading()
-    correction=error*Turn
-    MotorC.dc(-Speed-correction)
-    MotorD.dc(Speed-correction)
-
-def GyroMoveTurn(Angle,Speed,Time,Turn):
-    timer.reset()
-    while timer.time()<Time*1000:
-        GyroMoveVar(Angle,Speed,Turn)
-
-
-#Unusable
-# def GyroMoveTilt(Angle,Speed,tAngle):
-#     y=hub.imu.tilt()
-#     while True:
-#         y=hub.imu.tilt()
-#         # GryoMove(Angle,Speed)
-#         print (y[1])
-#     RobotStop()
