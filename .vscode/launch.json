@@ -21,6 +21,24 @@
             "args": [
                 "run","ble","--name","T2 Ramp","${file}"
             ],
+        },
+        {
+            "name": "T1 Ramp",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pybricksdev",
+            "args": [
+                "run","ble","--name","T1 Ramp","${file}"
+            ],
+        },
+        {
+            "name": "T1 Wall",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pybricksdev",
+            "args": [
+                "run","ble","--name","T1 Wall","${file}"
+            ],
         }
     ]
 }
