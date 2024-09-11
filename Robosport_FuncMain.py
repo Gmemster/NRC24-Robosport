@@ -77,6 +77,7 @@ def GyroMoveTurn(Angle,Speed,Time,Turn):
     timer.reset()
     while timer.time()<Time*1000:
         GyroMoveVar(Angle,Speed,Turn)
+    RobotStop()
 
 
 #Unusable
