@@ -61,7 +61,8 @@ def GyroMoveStuck(Angle,Speed):
     timer.reset()
     GyroMove(Angle,Speed)
     wait(300)
-    while abs(MotorC.speed())>300 or abs(MotorD.speed())>300 and timer.time()<2000:
+    print(abs(MotorC.speed()),abs(MotorD.speed()))
+    while abs(MotorC.speed())>600 or abs(MotorD.speed())>600 and timer.time()<2000:
         GyroMove(Angle,Speed)
     RobotStop()
 
