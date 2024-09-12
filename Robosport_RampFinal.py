@@ -2,7 +2,7 @@ from Robosport_FuncMain import *
 
 
 GyroReset()
-GyroMoveTime(0,100,1)
+GyroMoveTime(0,100,1.3)
 MotorE.dc(-100)
 wait(2000)
 MotorE.stop()
@@ -18,5 +18,7 @@ GyroMoveTurn(-90,100,1,1.4)
 MotorE.dc(-100)
 wait(2000)
 MotorE.stop()
+GyroMoveTurn(170,100,1,1.4)
+
 # GyroMoveTurn(-179,0)
 # GyroMoveTime(-90,100,0.3)
