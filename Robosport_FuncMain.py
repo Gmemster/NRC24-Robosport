@@ -9,7 +9,8 @@ hub = PrimeHub()
 ColorA=ColorSensor(Port.A)
 MotorC=Motor(Port.C)
 MotorD=Motor(Port.D)
-MotorE=Motor(Port.E)
+# MotorE=Motor(Port.E)
+Ultrasonic=UltrasonicSensor(Port.B)
 
 
 'Create timer function'
